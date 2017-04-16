@@ -22,7 +22,7 @@ public class test {
 	kList.findFirst();
 	while(!kList.last()){
 		System.out.println(kList.retrieve().first + " " + kList.retrieve().second);
-		System.out.println("=============="); 
+		System.out.println("==============");
 		kList.findNext();
 	}
 	System.out.println(kList.retrieve().first + " " + kList.retrieve().second);
