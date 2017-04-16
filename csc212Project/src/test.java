@@ -23,6 +23,7 @@ public class test {
 	while(!kList.last()){
 		System.out.println(kList.retrieve().first + " " + kList.retrieve().second);
 		kList.findNext();
+		
 	}
 	System.out.println(kList.retrieve().first + " " + kList.retrieve().second);
 	}
