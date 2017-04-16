@@ -17,7 +17,7 @@ public class Sequence {
 	public Usage getUsage(int k, int w){
 		LinkedList<String> kmersList = new LinkedList<String>();
 		String seq1 = seq;
-		/*calculate the absolute deference between k and w to ignore the not complete kmer */
+		/*calculate the absolute deference between k and w to ignore the not complete kmers */
 		int deference ;
 		if(k > w)
 			deference = k - w ;
