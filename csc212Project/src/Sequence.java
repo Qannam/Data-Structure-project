@@ -31,7 +31,7 @@ public class Sequence {
 			}
 			kmersList.insert(kmer);
 		}
-		/* ========================= */
+		/* ========================== */
 		Usage usage = new Usage() ;
 		kmersList.findFirst();
 		while(!kmersList.empty()){
