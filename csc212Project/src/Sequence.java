@@ -27,8 +27,6 @@ public class Sequence {
 		else
 			def = w-k;
 			
-//			if(w>=seq1.length())
-//				w=seq.length()-1;
 			/*calculate and insert kmers*/
 			try {
 				for(int i= 0; i < seq1.length() - def ; i+=w){
@@ -43,9 +41,10 @@ public class Sequence {
 		/* ========================== */
 		Usage usage = new Usage() ;
 		kmersList.findFirst();
+		String current;
 		while(!kmersList.empty()){
 			kmersList.findFirst();
-			String current = kmersList.retrieve();
+			current = kmersList.retrieve();
 			int occurrence = 1 ;
 			kmersList.findFirst();
 			/* calculate occurrences and delete it except first one */

@@ -5,6 +5,9 @@ import java.io.*;
 public class SequenceSet {
 	static LinkedList<Sequence> seqList = new LinkedList<Sequence>() ;
 	
+	public SequenceSet(){
+		
+	}
 	public static SequenceSet load(String fileName){
 		String header = null ;
 		String seq = null;

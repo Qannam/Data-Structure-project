@@ -2,14 +2,14 @@
 public class test {
 
 	public static void main(String[] args) {
-		SequenceSet s = SequenceSet.load("sample.fasta");
+		SequenceSet s = SequenceSet.load("ecoli.fasta");
 		
 		LinkedList<Sequence> list = s.getSequences() ;
 		list.findFirst();
 		Sequence ss = list.retrieve();
 		int number = ss.getSeq().length();
 		System.out.println(number);
-		LinkedList<Pair<String,Integer>> usageList = ss.getUsage(3,1).pList;
+		LinkedList<Pair<String,Integer>> usageList = s.getUsage(3,1).pList;
 		
 		usageList.findFirst();
 		
