@@ -7,16 +7,17 @@ public class test {
 		list.findFirst();
 //		while(!list.last()){
 //			System.out.println(list.retrieve().getHeader());
-//			System.out.println(list.retrieve().getSeq());
+//			System.out.println(list.retrieve().getSeq()); 
 //			list.findNext();
 //		}
 //		System.out.println(list.retrieve().getHeader());
 //		System.out.println(list.retrieve().getSeq());
 		
-
+//00000
 	
 	list.findFirst();
 	list.findNext();
+	
 	
 	Sequence kkk = list.retrieve();
 	LinkedList<Pair<String, Integer>> kList = kkk.getUsage(4,1).pList;
