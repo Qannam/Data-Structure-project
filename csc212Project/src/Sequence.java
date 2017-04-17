@@ -21,6 +21,8 @@ public class Sequence {
 		int deference ;
 		if(k > w)
 			deference = k - w ;
+		else if(k==w)
+			deference = seq1.length()%k;
 		else
 			deference = w - k ;
 		/*calculate and insert kmers*/
@@ -51,6 +53,12 @@ public class Sequence {
 					kmersList.findNext();
 					flag++;
 				}
+			}
+			/* last step */
+			if(kmersList.retrieve().equals(current) && !(flag == 0)){
+				occurrence++ ;
+				kmersList.remove();
+				flag++;
 			}
 			/* add the kmers with occurrences to usage and delete it from kmersList */
 			usage.add(current, occurrence);
