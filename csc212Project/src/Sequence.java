@@ -40,13 +40,16 @@ public class Sequence {
 			int occurrence = 1 ;
 			kmersList.findFirst();
 			/* calculate occurrences and delete it except first one */
+			int flag = 0 ;
 			while(!kmersList.last()){
-				if(kmersList.retrieve().equals(current)){
+				if(kmersList.retrieve().equals(current) && !(flag == 0)){
 					occurrence++ ;
 					kmersList.remove();
+					flag++;
 				}
 				else{
 					kmersList.findNext();
+					flag++;
 				}
 			}
 			/* add the kmers with occurrences to usage and delete it from kmersList */

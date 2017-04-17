@@ -16,9 +16,10 @@ public class test {
 
 	
 	list.findFirst();
+	list.findNext();
 	
 	Sequence kkk = list.retrieve();
-	LinkedList<Pair<String, Integer>> kList = kkk.getUsage(3,3).pList;
+	LinkedList<Pair<String, Integer>> kList = kkk.getUsage(4,1).pList;
 	kList.findFirst();
 	while(!kList.last()){
 		System.out.println(kList.retrieve().first + " " + kList.retrieve().second);
