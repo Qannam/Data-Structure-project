@@ -17,6 +17,7 @@ public class test {
 	
 	list.findFirst();
 	
+	
 	Sequence kkk = list.retrieve();
 	LinkedList<Pair<String, Integer>> kList = kkk.getUsage(3,3).pList;
 	kList.findFirst();
