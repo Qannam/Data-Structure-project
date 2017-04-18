@@ -18,25 +18,18 @@ public class Sequence {
 		LinkedList<String> kmersList = new LinkedList<String>();
 		String seq1 = seq;
 		/*calculate the absolute deference between k and w to ignore the not complete kmers */
-		int def = 0;
 		String kmer;
-		if(k>w)
-			def = k-w;
-		else if(k==w)
-			def = seq1.length()%k;
-		else
-			def = w-k;
-			
+		
 			/*calculate and insert kmers*/
-			try {
-				for(int i= 0; i < seq1.length() - def ; i+=w){
+			
+				for(int i= 0; seq1.length()-i >= k ; i+=w){
 					kmer = "" ;
 					for(int j = i ; j < i+k ; j++){
 						kmer += seq1.charAt(j);
 					}
 					kmersList.insert(kmer);
 				}
-			} catch (Exception e) {}
+			
 		
 		/* ========================== */
 		Usage usage = new Usage() ;

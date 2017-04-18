@@ -2,38 +2,34 @@
 public class test {
 
 	public static void main(String[] args) {
-		SequenceSet s = SequenceSet.load("ecoli.fasta");
+		SequenceSet s = SequenceSet.load("sample.fasta");
 		
-		LinkedList<Sequence> list = s.getSequences() ;
-		list.findFirst();
-		Sequence ss = list.retrieve();
-		int number = ss.getSeq().length();
-		System.out.println(number);
-		LinkedList<Pair<String,Integer>> usageList = s.getUsage(3,1).pList;
 		
-		usageList.findFirst();
+		/* ======================= test getUsage for SequenceSet class ======================= */
+//		Usage usageOfSeqSet = s.getUsage(3, 2);
+//		
+//		usageOfSeqSet.pList.findFirst();
+//		while(!usageOfSeqSet.pList.last()){
+//			System.out.println(usageOfSeqSet.pList.retrieve().first + " "+ usageOfSeqSet.pList.retrieve().second);
+//			usageOfSeqSet.pList.findNext();
+//		}
+//		System.out.println(usageOfSeqSet.pList.retrieve().first + " "+ usageOfSeqSet.pList.retrieve().second);
+		/* ======================================= END ====================================== */
 		
-		while(!usageList.last()){
-			System.out.println(usageList.retrieve().first + " "+ usageList.retrieve().second);
-			usageList.findNext();
+		
+		/* ======================= test getUsage for Sequence class ======================= */
+		s.seqList.findFirst();
+		Sequence seq = s.seqList.retrieve();
+		Usage usageOfseq = seq.getUsage(1, 9);
+		
+		usageOfseq.pList.findFirst();
+		while(!usageOfseq.pList.empty() && !usageOfseq.pList.last()){
+			System.out.println(usageOfseq.pList.retrieve().first + ":"+ usageOfseq.pList.retrieve().second);
+			usageOfseq.pList.findNext();
 		}
-		System.out.println(usageList.retrieve().first + " "+ usageList.retrieve().second);
-		
-		
-//00000
-//	LinkedList<Pair<String,Integer>> kList = testUsage.pList;
-//	kList.findFirst();
-//	kList.findNext();
-	
-	
-//	Sequence kkk = list.retrieve();
-//	LinkedList<Pair<String, Integer>> kList = kkk.getUsage(4,1).pList;
-//	kList.findFirst();
-//	while(!kList.last()){
-//		System.out.println(kList.retrieve().first + " " + kList.retrieve().second);
-//		kList.findNext();
-//	}
-//	System.out.println(kList.retrieve().first + " " + kList.retrieve().second);
+		System.out.println(usageOfseq.pList.retrieve().first + ":"+ usageOfseq.pList.retrieve().second);
+		/* ======================================= END ====================================== */
+				
 	}
 
 }

@@ -14,24 +14,19 @@ public class SequenceSet {
 		FileReader in;
 		try {
 			in = new FileReader(fileName);
-		
-	    BufferedReader br = new BufferedReader(in);
-
-	    String line = br.readLine();
-	    int count = 0 ;
-
-	    while (line!=null) {
-	    	if(count++ % 2 == 0)
-	        header = line ;
-	    	else{
-	    		seq = line ;
-	    		Sequence s = new Sequence(header, seq);
-	    		seqList.insert(s);
-	    	}
-	        line = br.readLine();
-	    	
-	    	
-	    	
+		    BufferedReader br = new BufferedReader(in);
+		    String line = br.readLine();
+		    int count = 0 ;
+	
+		    while (line!=null) {
+		    	if(count++ % 2 == 0)
+		        header = line ;
+		    	else{
+		    		seq = line ;
+		    		Sequence s = new Sequence(header, seq);
+		    		seqList.insert(s);
+		    	}
+		        line = br.readLine();	
 	    }
 	    in.close();
 	    } catch (Exception e) {
@@ -47,29 +42,22 @@ public class SequenceSet {
 		public Usage getUsage(int k, int w){
 			Usage returnedUsage = new Usage();
 			seqList.findFirst();
-			
+			Usage u = null ;
 			while(!seqList.last()){
-				
 				Sequence seq = seqList.retrieve();
-				
-				
-				Usage u = seq.getUsage(k, w);
-				
-				
+				u = seq.getUsage(k, w);
+
 				u.pList.findFirst();
 				while(!u.pList.last()){
 					returnedUsage.pList.insert(u.pList.retrieve());
 					u.pList.findNext();
 				}
 				returnedUsage.pList.insert(u.pList.retrieve());
-				
 				seqList.findNext();
 			}
+			/* ==================== last step for "while(!seqList.last())"  ======================*/
 			Sequence seq = seqList.retrieve();
-			
-			
-			Usage u = seq.getUsage(k, w);
-			
+			u = seq.getUsage(k, w);
 			
 			u.pList.findFirst();
 			while(!u.pList.last()){
@@ -78,8 +66,8 @@ public class SequenceSet {
 			}
 			returnedUsage.pList.insert(u.pList.retrieve());
 			
-			//filter the final list
 			
+			/* filter from the kmers that repeated */
 			returnedUsage.pList.findFirst();
 			Pair<String,Integer> current;
 			int flag = 0;
@@ -98,14 +86,12 @@ public class SequenceSet {
 						returnedUsage.pList.findNext();
 						flag++;
 					}
-		
 				}
-				
 				if(current.first.equals(returnedUsage.pList.retrieve().first) && flag!=0){
 					current.second+=returnedUsage.pList.retrieve().second;
 					returnedUsage.pList.remove();
 				}
-				
+				/* insert the current to new List after filter the old List from it */
 				newReturnedList.insert(current);
 				returnedUsage.pList.findFirst();
 				returnedUsage.pList.remove();
@@ -120,6 +106,4 @@ public class SequenceSet {
 	public LinkedList<Sequence> getSequences(){
 		return seqList ;
 	}
-	
-
 }
