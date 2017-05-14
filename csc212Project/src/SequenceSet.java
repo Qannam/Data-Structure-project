@@ -40,6 +40,8 @@ public class SequenceSet {
 	
 	// Return the global usage over all sequences in the set. The word length is k and window step size is w.
 		public Usage getUsage(int k, int w){
+			if(seqList.empty())
+				return null;
 			Usage returnedUsage = new Usage();
 			seqList.findFirst();
 			Usage u = null ;

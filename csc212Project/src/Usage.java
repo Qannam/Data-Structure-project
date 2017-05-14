@@ -10,18 +10,35 @@ public class Usage {
 
 	// Add a kmer with the corresponding number of occurrences. 
 	public void add(String kmer, int count){
-		Pair<String, Integer> p = new Pair<String, Integer>(kmer, count);
-		pList.insert(p);
-		
+		if(getCount(kmer) == 0 || pList.empty()){
+			pList.insert(new Pair<String, Integer>(kmer, count));
+		}
+		else{
+			pList.findFirst();
+			while(!pList.last()){
+				if(pList.retrieve().first.equals(kmer)){
+					int x = pList.retrieve().second;
+					pList.update(new Pair<String, Integer>(kmer, count+x));
+					return;
+				}
+				pList.findNext();
+			}
+			if(pList.retrieve().first.equals(kmer)){
+				int x = pList.retrieve().second;
+				pList.update(new Pair<String, Integer>(kmer, count+x));
+			}
+		}
 	}
 	
 	// Return the number of occurrences of kmer.
 	public int getCount(String kmer){
+		if(pList.empty())
+			return 0;
 		pList.findFirst();
 		while(!pList.last()){
 			if(pList.retrieve().first.equals(kmer))
 				return pList.retrieve().second ;
-			pList.findFirst();
+			pList.findNext();
 		}
 		if(pList.retrieve().first.equals(kmer))
 			return pList.retrieve().second ;
