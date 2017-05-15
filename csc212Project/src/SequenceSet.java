@@ -42,7 +42,7 @@ public class SequenceSet {
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
 		}
-		 seqList = seq1.seqList ;
+		 seqList = seq1.seqList;
 		return seq1;
 	}
 	
