@@ -10,22 +10,26 @@ public class Usage {
 
 	// Add a kmer with the corresponding number of occurrences. 
 	public void add(String kmer, int count){
-		if(getCount(kmer) == 0 || pList.empty()){
+		if(getCount(kmer) == 0 ){
 			pList.insert(new Pair<String, Integer>(kmer, count));
+	//		System.out.println(kmer + " " + count);
 		}
 		else{
+//			System.out.println("============================================= enter else ===============================");
 			pList.findFirst();
 			while(!pList.last()){
 				if(pList.retrieve().first.equals(kmer)){
-					int x = pList.retrieve().second;
-					pList.update(new Pair<String, Integer>(kmer, count+x));
+					
+					
+					pList.update(new Pair<String, Integer>(kmer, count+pList.retrieve().second));
+	//				System.out.println(kmer + " " + pList.retrieve().second);
 					return;
 				}
 				pList.findNext();
 			}
 			if(pList.retrieve().first.equals(kmer)){
-				int x = pList.retrieve().second;
-				pList.update(new Pair<String, Integer>(kmer, count+x));
+//				System.out.println(kmer + " " + pList.retrieve().second);
+				pList.update(new Pair<String, Integer>(kmer, count+pList.retrieve().second));
 			}
 		}
 	}
