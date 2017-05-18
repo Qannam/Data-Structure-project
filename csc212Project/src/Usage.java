@@ -7,7 +7,6 @@ public class Usage {
 		pList = new LinkedList<Pair<String, Integer>>();
 	}
 
-
 	// Add a kmer with the corresponding number of occurrences. 
 	public void add(String kmer, int count){
 		if(getCount(kmer) == 0 ){

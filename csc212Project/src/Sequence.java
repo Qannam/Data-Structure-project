@@ -8,7 +8,7 @@ public class Sequence {
 		this.seq = seq ;
 	}
 	public String getHeader() {
-		return header.substring(1);
+		return header;
 	}
 	public String getSeq() {
 		return seq;

@@ -3,17 +3,11 @@ import java.io.*;
 
 //This class represents a set of sequences.
 public class SequenceSet {
-	 static LinkedList<Sequence> seqList;// = new LinkedList<Sequence>() ;
+	 LinkedList<Sequence> seqList;// = new LinkedList<Sequence>() ;
 	
 	public SequenceSet(){
 		seqList = new LinkedList<Sequence>() ;
 	}
-	
-	
-	
-	
-	
-	
 	public static SequenceSet load(String fileName){
 		String header = null ;
 		String seq = null;
@@ -28,7 +22,8 @@ public class SequenceSet {
 	
 		    while (line!=null) {
 		    	if(count++ % 2 == 0)
-		        header = line ;
+		        header = line.substring(1) ;
+		    	
 		    	else{
 		    		seq = line ;
 		    		Sequence s = new Sequence(header, seq);
@@ -42,7 +37,7 @@ public class SequenceSet {
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
 		}
-		 seqList = seq1.seqList;
+		
 		return seq1;
 	}
 	
@@ -91,16 +86,8 @@ public class SequenceSet {
 			// TODO Auto-generated catch block
 		} //last check
 		
-		
-		
-		
-		
 		return usage;
-	}
-	
-	
-		
-		
+	}	
 	public LinkedList<Sequence> getSequences(){
 		return seqList ;
 	}
